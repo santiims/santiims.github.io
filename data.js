@@ -130,6 +130,26 @@ const data = [
         map: DUST2,
         difficulty: MEDIUM,
     },
+    {
+        image: 'clips/dust2/smoke_ct.webm',
+        grenade: SMOKE,
+        jumpthrow: true,
+        runthrow: false,
+        crouch: true,
+        additionalNotes: 'Smoke CT',
+        map: DUST2,
+        difficulty: EASY,
+    },
+    {
+        image: 'clips/dust2/smoke_xbox_2.webm',
+        grenade: SMOKE,
+        jumpthrow: false,
+        runthrow: false,
+        crouch: false,
+        additionalNotes: 'Smoke Xbox from tunnels',
+        map: DUST2,
+        difficulty: EASY,
+    },
     // MIRAGE
     {
         image: 'clips/mirage/smoke_window.mp4',
@@ -143,7 +163,7 @@ const data = [
     },
     // INFERNO
     {
-        image: 'clips/inferno/smoke_coffin.mp4',
+        image: 'clips/inferno/smoke_coffin.webm',
         grenade: SMOKE,
         jumpthrow: false,
         runthrow: false,
@@ -153,22 +173,12 @@ const data = [
         difficulty: EASY,
     },
     {
-        image: 'clips/inferno/molly_newbox.mp4',
+        image: 'clips/inferno/molly_newbox.webm',
         grenade: MOLOTOV,
         jumpthrow: false,
         runthrow: false,
         crouch: false,
         additionalNotes: 'Molly newbox',
-        map: INFERNO,
-        difficulty: EASY,
-    },
-    {
-        image: 'clips/inferno/smoke_ct.mp4',
-        grenade: SMOKE,
-        jumpthrow: false,
-        runthrow: false,
-        crouch: false,
-        additionalNotes: 'Smoke CT',
         map: INFERNO,
         difficulty: EASY,
     },
@@ -183,7 +193,7 @@ const data = [
         difficulty: MEDIUM,
     },
     {
-        image: 'clips/inferno/smoke_boost.mp4',
+        image: 'clips/inferno/smoke_boost.webm',
         grenade: SMOKE,
         jumpthrow: false,
         runthrow: false,
