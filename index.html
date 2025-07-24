@@ -19,6 +19,7 @@
         // todo: grupēt granātas pēc stratēģijām - t.i., inferno smoke long + smoke moto
         (() => {
             const div = document.querySelector('#app');
+            let maxVideos = 3;
             const filter = new Filter(MAPS, GRENADES, DIFFICULTIES);
 
             const render = () => {
@@ -33,6 +34,7 @@
                     const filterNames = ['map', 'grenade', 'difficulty'];
                     selector.addEventListener('change', event => {
                         filter[filterNames[index]] = event.target.value;
+                        maxVideos = 3;
                         render();
                     });
                 });
@@ -43,12 +45,27 @@
                 div.appendChild(selectorContainer);
 
                 const filteredData = filter.getFilteredDataObjects(data);
-                filteredData.forEach(item => {
+                filteredData.forEach((item, index) => {
+                    if (index >= maxVideos) {
+                        return;
+                    }
+
                     const imageDiv = buildVideoNode(item);
 
                     div.appendChild(imageDiv);
                 });
             };
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+
+                if (scrollTop + windowHeight >= docHeight - 100) {
+                    maxVideos += 3;
+                    render();
+                }
+            });
 
             render();
         })();
