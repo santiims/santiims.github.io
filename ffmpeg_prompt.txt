@@ -1,0 +1,1 @@
+ffmpeg -ss 3 -i input.mp4 -c:v libsvtav1 -preset 4 -crf 30 -an output.webm
