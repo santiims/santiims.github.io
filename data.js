@@ -202,6 +202,26 @@ const data = [
         map: INFERNO,
         difficulty: EASY,
     },
+    {
+        image: 'clips/inferno/molly_apps.webm',
+        grenade: MOLOTOV,
+        jumpthrow: false,
+        runthrow: true,
+        crouch: false,
+        additionalNotes: 'Molly apps',
+        map: INFERNO,
+        difficulty: EASY,
+    },
+    {
+        image: 'clips/inferno/flash_pit.webm',
+        grenade: FLASH,
+        jumpthrow: false,
+        runthrow: false,
+        crouch: true,
+        additionalNotes: 'Flash pit',
+        map: INFERNO,
+        difficulty: EASY,
+    },
     // OVERPASS
     {
         image: 'clips/overpass/smoke_monster.mp4',
