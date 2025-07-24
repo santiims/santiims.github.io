@@ -208,5 +208,25 @@ const data = [
         additionalNotes: '',
         map: NUKE,
         difficulty: HARD,
-    }
+    },
+    {
+        image: 'clips/inferno/smoke_banana.mp4',
+        grenade: SMOKE,
+        jumpthrow: true,
+        runthrow: false,
+        crouch: false,
+        additionalNotes: '',
+        map: INFERNO,
+        difficulty: MEDIUM,
+    },
+    {
+        image: 'clips/inferno/smoke_boost.mp4',
+        grenade: SMOKE,
+        jumpthrow: false,
+        runthrow: false,
+        crouch: false,
+        additionalNotes: '',
+        map: INFERNO,
+        difficulty: EASY,
+    },
 ];
