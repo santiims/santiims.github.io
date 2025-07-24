@@ -19,10 +19,23 @@
         // todo: grupēt granātas pēc stratēģijām - t.i., inferno smoke long + smoke moto
         (() => {
             const div = document.querySelector('#app');
-            let maxVideos = 3;
+            let page = 1;
             const filter = new Filter(MAPS, GRENADES, DIFFICULTIES);
 
+            const renderPage = (data, page = 1) => {
+                const start = (page - 1) * 3;
+                const end = start + 3;
+                const renderableData = data.slice(start, end);
+
+                renderableData.forEach(item => {
+                    const imageDiv = buildVideoNode(item);
+
+                    div.appendChild(imageDiv);
+                });
+            };
+
             const render = () => {
+                page = 1;
                 clear(div);
                 const selectorContainer = document.createElement('div');
                 selectorContainer.className = "selector-container";
@@ -34,7 +47,6 @@
                     const filterNames = ['map', 'grenade', 'difficulty'];
                     selector.addEventListener('change', event => {
                         filter[filterNames[index]] = event.target.value;
-                        maxVideos = 3;
                         render();
                     });
                 });
@@ -45,15 +57,8 @@
                 div.appendChild(selectorContainer);
 
                 const filteredData = filter.getFilteredDataObjects(data);
-                filteredData.forEach((item, index) => {
-                    if (index >= maxVideos) {
-                        return;
-                    }
 
-                    const imageDiv = buildVideoNode(item);
-
-                    div.appendChild(imageDiv);
-                });
+                renderPage(filteredData);
             };
 
             window.addEventListener('scroll', () => {
@@ -62,8 +67,7 @@
                 const docHeight = document.documentElement.scrollHeight;
 
                 if (scrollTop + windowHeight >= docHeight - 100) {
-                    maxVideos += 3;
-                    render();
+                    renderPage(filter.getFilteredDataObjects(data), ++page);
                 }
             });
 
