@@ -270,7 +270,7 @@ const data = [
         difficulty: EASY,
     },
     {
-        image: 'clips/inferno/smoke_B_doors.mp4',
+        image: 'clips/dust2/smoke_B_doors.mp4',
         grenade: SMOKE,
         jumpthrow: true,
         runthrow: true,
