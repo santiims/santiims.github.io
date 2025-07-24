@@ -42,18 +42,12 @@
                 selectorContainer.appendChild(difficultySelector);
                 div.appendChild(selectorContainer);
 
-                const filterCallback = (param) => {
-                    return (item) => filter[param] && filter[param] !== 'All' ? item[param] === filter[param] : true;
-                };
+                const filteredData = filter.getFilteredDataObjects(data);
+                filteredData.forEach(item => {
+                    const imageDiv = buildVideoNode(item);
 
-                data.filter(filterCallback('map'))
-                    .filter(filterCallback('grenade'))
-                    .filter(filterCallback('difficulty'))
-                    .forEach(item => {
-                        const imageDiv = buildVideoNode(item);
-
-                        div.appendChild(imageDiv);
-                    });
+                    div.appendChild(imageDiv);
+                });
             };
 
             render();

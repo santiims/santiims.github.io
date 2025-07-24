@@ -41,13 +41,35 @@ class Filter {
 
     buildMapSelector() {
         return this.buildSelector('map', this.maps, true);
-    };
+    }
 
     buildGrenadeSelector() {
         return this.buildSelector('grenade', this.grenades, true);
-    };
+    }
 
     buildDifficultySelector() {
         return this.buildSelector('difficulty', this.difficulties, true);
-    };
+    }
+
+    getFilteredDataObjects(data) {
+        return data.filter(dataObj => {
+            let mapValid = true;
+            let grenadeValid = true;
+            let difficultyValid = true;
+
+            if (this.map && this.map !== 'All') {
+                mapValid = dataObj.map === this.map;
+            }
+
+            if (this.grenade && this.grenade !== 'All') {
+                grenadeValid = dataObj.grenade === this.grenade;
+            }
+
+            if (this.difficulty && this.difficulty !== 'All') {
+                difficultyValid = dataObj.difficulty === this.difficulty;
+            }
+
+            return mapValid && grenadeValid && difficultyValid;
+        });
+    }
 }
