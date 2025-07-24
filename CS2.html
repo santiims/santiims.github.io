@@ -1,0 +1,377 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="app" style="display: flex; flex-direction: column; align-items: center;">
+        </div>
+        <script>
+            // todo: checkboksis pilnīgiem idiotiem, kuri nevar iemācīties vairāk par 1 granātu
+            // todo: grupēt granātas pēc stratēģijām - t.i., inferno smoke long + smoke moto
+            (() => {
+                const div = document.querySelector('#app');
+                const filter = {
+                    map: null,
+                    grenade: null,
+                    difficulty: null,
+                };
+
+                const MIRAGE = 'Mirage';
+                const DUST2 = 'Dust2';
+                const NUKE = 'Nuke';
+                const ANCIENT = 'Ancient';
+                const VERTIGO = 'Vertigo';
+                const ANUBIS = 'Anubis';
+                const OVERPASS = 'Overpass';
+                const INFERNO = 'Inferno';
+
+                const MAPS = [
+                    MIRAGE,
+                    DUST2,
+                    NUKE,
+                    ANCIENT,
+                    VERTIGO,
+                    ANUBIS,
+                    OVERPASS,
+                    INFERNO,
+                ];
+
+                const SMOKE = 'Smoke';
+                const GRENADE = 'Grenade';
+                const MOLOTOV = 'Molotov';
+                const FLASH = 'Flash';
+                const DECOY = 'Decoy';
+
+                const GRENADES = [
+                    SMOKE,
+                    GRENADE,
+                    MOLOTOV,
+                    FLASH,
+                    DECOY,
+                ];
+
+                const EASY = 'Easy';
+                const MEDIUM = 'Medium';
+                const HARD = 'Hard';
+
+                const DIFFICULTIES = [
+                    EASY,
+                    MEDIUM,
+                    HARD,
+                ];
+
+                const JUMPTHROW = 'jumpthrow';
+                const RUNTHROW = 'runthrow';
+                const CROUCH = 'crouch';
+
+                const MOVEMENTS = [
+                    JUMPTHROW,
+                    RUNTHROW,
+                    CROUCH,
+                ];
+
+                const texts = {
+                    'map': 'Visas kartes',
+                    'grenade': 'Visas granātas',
+                    'difficulty': 'Visas grūtības pakāpes',
+                };
+
+                const data = [
+                    {
+                        image: 'clips/mirage/smoke_window.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: true,
+                        crouch: true,
+                        additionalNotes: '',
+                        map: MIRAGE,
+                        difficulty: HARD,
+                    },
+                    {
+                        image: 'clips/overpass/smoke_monster.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: true,
+                        additionalNotes: '',
+                        map: OVERPASS,
+                        difficulty: MEDIUM,
+                    },
+                    {
+                        image: 'clips/vertigo/smoke_ramp.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: false,
+                        runthrow: true,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: VERTIGO,
+                        difficulty: MEDIUM,
+                    },
+                    {
+                        image: 'clips/ancient/smoke_mid.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Smoke mid',
+                        map: ANCIENT,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/ancient/smoke_a.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Smoke A - CT',
+                        map: ANCIENT,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/ancient/smoke_b.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Smoke B - CT',
+                        map: ANCIENT,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/inferno/smoke_coffin.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: false,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Smoke coffins',
+                        map: INFERNO,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/inferno/molly_newbox.mp4',
+                        grenade: MOLOTOV,
+                        jumpthrow: false,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Molly newbox',
+                        map: INFERNO,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/inferno/smoke_ct.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: false,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: 'Smoke CT',
+                        map: INFERNO,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/nuke/smoke_outside_1.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: NUKE,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/anubis/smoke_mid.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: true,
+                        additionalNotes: '',
+                        map: ANUBIS,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/dust2/smoke_xbox.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: DUST2,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/vertigo/smoke_short.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: true,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: VERTIGO,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/vertigo/smoke_ramp_2.mp4',
+                        grenade: SMOKE,
+                        jumpthrow: false,
+                        runthrow: false,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: VERTIGO,
+                        difficulty: EASY,
+                    },
+                    {
+                        image: 'clips/nuke/molotov_outside.mp4',
+                        grenade: MOLOTOV,
+                        jumpthrow: false,
+                        runthrow: true,
+                        crouch: false,
+                        additionalNotes: '',
+                        map: NUKE,
+                        difficulty: HARD,
+                    }
+                ];
+
+            const clear = () => {
+                div.innerHTML = '';
+            };
+
+            const buildSelector = (name, options, shouldCreateEmptyOption) => {
+                const selector = document.createElement('select');
+
+                if (shouldCreateEmptyOption) {
+                    const emptyOption = document.createElement('option');
+                    emptyOption.value = 'All';
+                    const span = document.createElement('span');
+                    span.innerHTML = texts[name];
+                    emptyOption.appendChild(span)
+                    selector.appendChild(emptyOption);
+                }
+
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    const span = document.createElement('span');
+                    span.innerHTML = option;
+                    optionElement.appendChild(span)
+                    selector.appendChild(optionElement);
+                })
+
+                if (filter[name] && filter[name] !== 'null') {
+                    const index = options.indexOf(filter[name]);
+
+                    selector.selectedIndex = index + 1;
+                }
+
+                selector.addEventListener('change', event => {
+                    filter[name] = event.target.value;
+                    render();
+                });
+
+                return selector;
+            };
+
+            const buildMapSelector = () => {
+                return buildSelector('map', MAPS, true);
+            };
+
+            const buildGrenadeSelector = () => {
+                return buildSelector('grenade', GRENADES, true);
+            };
+
+            const buildDifficultySelector = () => {
+                return buildSelector('difficulty', DIFFICULTIES, true);
+            };
+
+            const buildCheckbox = (index, value) => {
+                const div = document.createElement('div');
+                div.className = "label";
+                div.classList.toggle('active', value);
+                const label = document.createElement('label');
+                label.innerHTML = MOVEMENTS[index];
+                div.appendChild(label);
+
+                return div;
+            };
+
+            const render = () => {
+                clear();
+                const selectorContainer = document.createElement('div');
+                selectorContainer.className = "selector-container";
+                selectorContainer.appendChild(buildMapSelector());
+                selectorContainer.appendChild(buildGrenadeSelector());
+                selectorContainer.appendChild(buildDifficultySelector());
+                div.appendChild(selectorContainer);
+
+                const filterCallback = (param) => {
+                    return (item) => filter[param] && filter[param] !== 'All' ? item[param] === filter[param] : true;
+                };
+
+                data.filter(filterCallback('map'))
+                .filter(filterCallback('grenade'))
+                .filter(filterCallback('difficulty'))
+                .forEach(item => {
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = "content";
+                    const imageContainer = document.createElement('div');
+                    imageContainer.className = "image-container";
+                    const videoElement = document.createElement('video');
+                    const sourceElement = document.createElement('source');
+                    sourceElement.src = item.image;
+                    videoElement.width = 768;
+                    videoElement.height = 432;
+                    videoElement.style.display = 'block';
+                    videoElement.style.justifyContent = 'center';
+                    videoElement.controls = true;
+                    videoElement.appendChild(sourceElement);
+                    imageContainer.appendChild(videoElement);
+                    imageDiv.appendChild(imageContainer);
+
+                    const detailsDiv = document.createElement('div');
+                    detailsDiv.className = "description";
+                    const mapDifficultyContainer = document.createElement('div');
+                    mapDifficultyContainer.className = "title-container";
+                    const iconTitleContainer = document.createElement('div');
+                    iconTitleContainer.className = "title";
+                    const mapTitle = document.createElement('h2');
+                    mapTitle.className = "map-title";
+                    mapTitle.innerHTML = item.map;
+                    const iconSpan = document.createElement('span');
+                    iconSpan.title = item.grenade.toLowerCase();
+                    iconSpan.className = 'icon ' + item.grenade.toLowerCase();
+                    iconTitleContainer.appendChild(mapTitle);
+                    iconTitleContainer.appendChild(iconSpan);
+                    const difficultyTitle = document.createElement('span');
+                    difficultyTitle.className = item.difficulty.toLocaleLowerCase() + " difficulty";
+                    difficultyTitle.innerHTML = item.difficulty;
+                    mapDifficultyContainer.appendChild(iconTitleContainer);
+                    mapDifficultyContainer.appendChild(difficultyTitle);
+                    detailsDiv.appendChild(mapDifficultyContainer);
+
+                    if (item.additionalNotes) {
+                        const textElement = document.createElement('p');
+                        textElement.innerHTML = item.additionalNotes;
+                        detailsDiv.appendChild(textElement);
+                    }
+
+                    const checkboxContainer = document.createElement('div');
+                    checkboxContainer.className = "label-container";
+
+                    for (index in MOVEMENTS) {
+                        const checkbox = buildCheckbox(index, item[MOVEMENTS[index]]);
+                        checkboxContainer.appendChild(checkbox);
+                    }
+
+                    detailsDiv.appendChild(checkboxContainer);
+                    imageDiv.appendChild(detailsDiv);
+
+                    div.appendChild(imageDiv);
+                });
+            };
+
+            render();
+            })();
+        </script>
+    </body>
+</html>
