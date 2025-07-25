@@ -48,7 +48,7 @@ export default {
             return this.clipInfo.difficulty.toLowerCase() + " difficulty";
         },
         iconClass() {
-            return "icon " + this.clipInfo.grenade;
+            return "icon " + this.clipInfo.grenade.toLowerCase();
         },
     },
 }
