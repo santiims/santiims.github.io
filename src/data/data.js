@@ -1,64 +1,6 @@
-const MIRAGE = 'Mirage';
-const DUST2 = 'Dust2';
-const NUKE = 'Nuke';
-const ANCIENT = 'Ancient';
-const VERTIGO = 'Vertigo';
-const ANUBIS = 'Anubis';
-const OVERPASS = 'Overpass';
-const INFERNO = 'Inferno';
+import { SMOKE, MOLOTOV, FLASH, DUST2, MIRAGE, INFERNO, OVERPASS, VERTIGO, ANCIENT, NUKE, ANUBIS, EASY, MEDIUM, HARD } from './consts';
 
-const MAPS = [
-    MIRAGE,
-    DUST2,
-    NUKE,
-    ANCIENT,
-    VERTIGO,
-    ANUBIS,
-    OVERPASS,
-    INFERNO,
-];
-
-const SMOKE = 'Smoke';
-const GRENADE = 'Grenade';
-const MOLOTOV = 'Molotov';
-const FLASH = 'Flash';
-const DECOY = 'Decoy';
-
-const GRENADES = [
-    SMOKE,
-    GRENADE,
-    MOLOTOV,
-    FLASH,
-    DECOY,
-];
-
-const EASY = 'Easy';
-const MEDIUM = 'Medium';
-const HARD = 'Hard';
-
-const DIFFICULTIES = [
-    EASY,
-    MEDIUM,
-    HARD,
-];
-
-const JUMPTHROW = 'jumpthrow';
-const RUNTHROW = 'runthrow';
-const CROUCH = 'crouch';
-
-const MOVEMENTS = [
-    JUMPTHROW,
-    RUNTHROW,
-    CROUCH,
-];
-
-const texts = {
-    'map': 'All maps',
-    'grenade': 'All grenades',
-    'difficulty': 'All difficulties',
-};
-
-const data = [
+export default [
     // DUST2
     {
         image: 'clips/dust2/smoke_xbox.webm',

@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(header_bg.svg);
+    background-image: url(images/header_bg.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -74,32 +74,32 @@ h2 {
 }
 
 .icon.smoke {
-    background-image: url("smokegrenade.svg");
+    background-image: url("images/smokegrenade.svg");
     background-size: 12px;
 }
 
 .icon.grenade {
-    background-image: url("hegrenade.svg");
+    background-image: url("images/hegrenade.svg");
     background-size: 19px;
 }
 
 .icon.molotov {
-    background-image: url("molotov.svg");
+    background-image: url("images/molotov.svg");
     background-size: 19px;
 }
 
 .icon.flash {
-    background-image: url("flashbang.svg");
+    background-image: url("images/flashbang.svg");
     background-size: 25px;
 }
 
 .icon.decoy {
-    background-image: url("decoy.svg");
+    background-image: url("images/decoy.svg");
     background-size: 24px;
 }
 
 .icon.bomb {
-    background-image: url("bomb.svg");
+    background-image: url("images/bomb.svg");
     background-size: 24px;
 }
 

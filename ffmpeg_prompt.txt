@@ -1,1 +1,9 @@
 ffmpeg -ss 3 -i input.mp4 -c:v libsvtav1 -preset 4 -crf 30 -an output.webm
+
+-ss 3 => cut off first three seconds of the video
+-i input.mp4 => input file to compress
+-c:v libsvtav1 => encoding
+-preset 4 => size and speed of compression. Lower number -> slower, but shaves off extra MB/KB. Higher number -> faster, but larger
+-crf 30 => quality. Lower is better
+-an => no sound
+output.webm => output file name

@@ -1,79 +1,14 @@
-<html>
-
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="data.js"></script>
-    <script src="helpers.js"></script>
-    <script src="structures/filter.js"></script>
-    <meta charset="UTF-8">
-</head>
-
-<body>
-    <div id="app" style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
-    </div>
-    <script>
-        // todo: checkboksis pilnīgiem idiotiem, kuri nevar iemācīties vairāk par 1 granātu
-        // todo: grupēt granātas pēc stratēģijām - t.i., inferno smoke long + smoke moto
-        (() => {
-            const div = document.querySelector('#app');
-            let page = 1;
-            const filter = new Filter(MAPS, GRENADES, DIFFICULTIES);
-
-            const renderPage = (data, page = 1) => {
-                const start = (page - 1) * 3;
-                const end = start + 3;
-                const renderableData = data.slice(start, end);
-
-                renderableData.forEach(item => {
-                    const imageDiv = buildVideoNode(item);
-
-                    div.appendChild(imageDiv);
-                });
-            };
-
-            const render = () => {
-                page = 1;
-                clear(div);
-                const selectorContainer = document.createElement('div');
-                selectorContainer.className = "selector-container";
-                const mapSelector = filter.buildMapSelector();
-                const grenadeSelector = filter.buildGrenadeSelector();
-                const difficultySelector = filter.buildDifficultySelector();
-
-                [mapSelector, grenadeSelector, difficultySelector].forEach((selector, index) => {
-                    const filterNames = ['map', 'grenade', 'difficulty'];
-                    selector.addEventListener('change', event => {
-                        filter[filterNames[index]] = event.target.value;
-                        render();
-                    });
-                });
-
-                selectorContainer.appendChild(mapSelector);
-                selectorContainer.appendChild(grenadeSelector);
-                selectorContainer.appendChild(difficultySelector);
-                div.appendChild(selectorContainer);
-
-                const filteredData = filter.getFilteredDataObjects(data);
-
-                renderPage(filteredData);
-            };
-
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY;
-                const windowHeight = window.innerHeight;
-                const docHeight = document.documentElement.scrollHeight;
-
-                if (scrollTop + windowHeight >= docHeight - 100) {
-                    renderPage(filter.getFilteredDataObjects(data), ++page);
-                }
-            });
-
-            render();
-        })();
-    </script>
-</body>
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <script type="module" crossorigin src="./assets/index-B8oOR1oZ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-rlR4dNsg.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>

@@ -1,0 +1,16 @@
+node_modules/
+old_stuff/
+dist/
+.vite/
+
+# Logs
+npm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# VS Code
+.vscode/
+
+package-lock.json
