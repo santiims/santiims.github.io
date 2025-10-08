@@ -1,4 +1,4 @@
-import { SMOKE, MOLOTOV, FLASH, DUST2, MIRAGE, INFERNO, OVERPASS, VERTIGO, ANCIENT, NUKE, ANUBIS, EASY, MEDIUM, HARD } from './consts';
+import { SMOKE, MOLOTOV, FLASH, DUST2, MIRAGE, INFERNO, OVERPASS, VERTIGO, ANCIENT, NUKE, ANUBIS, EASY, MEDIUM, HARD, GRENADE } from './consts';
 
 export default [
     // DUST2
@@ -140,6 +140,16 @@ export default [
         runthrow: false,
         crouch: false,
         additionalNotes: 'Smoke stairs',
+        map: MIRAGE,
+        difficulty: EASY,
+    },
+    {
+        image: 'clips/mirage/break_window_smoke.webm',
+        grenade: GRENADE,
+        jumpthrow: true,
+        runthrow: false,
+        crouch: true,
+        additionalNotes: 'Break window smoke. Right-click throw',
         map: MIRAGE,
         difficulty: EASY,
     },
