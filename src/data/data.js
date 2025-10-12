@@ -216,7 +216,7 @@ export default [
     },
     // OVERPASS
     {
-        image: 'clips/overpass/smoke_monster.mp4',
+        image: 'clips/overpass/smoke_monster.webm',
         grenade: SMOKE,
         jumpthrow: true,
         runthrow: false,
@@ -224,6 +224,16 @@ export default [
         additionalNotes: 'Smoke monster',
         map: OVERPASS,
         difficulty: MEDIUM,
+    },
+    {
+        image: 'clips/overpass/smoke_heaven.webm',
+        grenade: SMOKE,
+        jumpthrow: false,
+        runthrow: true,
+        crouch: false,
+        additionalNotes: 'Smoke heaven',
+        map: OVERPASS,
+        difficuly: EASY,
     },
     // VERTIGO
     {
