@@ -233,7 +233,7 @@ export default [
         crouch: false,
         additionalNotes: 'Smoke heaven',
         map: OVERPASS,
-        difficuly: EASY,
+        difficulty: EASY,
     },
     // VERTIGO
     {
