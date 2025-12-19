@@ -92,6 +92,16 @@ export default [
         map: DUST2,
         difficulty: EASY,
     },
+    {
+        image: 'clips/dust2/smoke_window.webm',
+        grenade: SMOKE,
+        jumpthrow: true,
+        runthrow: true,
+        crouch: false,
+        additionalNotes: 'Smoke window from T spawn',
+        map: DUST2,
+        difficulty: EASY,
+    },
     // MIRAGE
     {
         image: 'clips/mirage/smoke_window.webm',
@@ -150,6 +160,16 @@ export default [
         runthrow: false,
         crouch: true,
         additionalNotes: 'Break window smoke. Right-click throw',
+        map: MIRAGE,
+        difficulty: EASY,
+    },
+    {
+        image: 'clips/mirage/smoke_short.webm',
+        grenade: SMOKE,
+        jumpthrow: false,
+        runthrow: false,
+        crouch: false,
+        additionalNotes: 'Smoke short from apps',
         map: MIRAGE,
         difficulty: EASY,
     },
@@ -254,6 +274,16 @@ export default [
         additionalNotes: 'Smoke heaven',
         map: OVERPASS,
         difficulty: EASY,
+    },
+    {
+        image: 'clips/overpass/molly_barrels.webm',
+        grenade: MOLOTOV,
+        jumpthrow: true,
+        runthrow: true,
+        crouch: false,
+        additionalNotes: 'Molly barrels from monster',
+        map: OVERPASS,
+        difficulty: HARD,
     },
     // VERTIGO
     {

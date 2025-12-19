@@ -1,0 +1,5 @@
+1) delete index.html
+2) delete assets directory
+3) npm run build
+4) cut&paste content from dist directory into project root
+5) git commit & git push
